@@ -1,0 +1,28 @@
+const bot = require("../Utilis/events");
+const wait = async (t) => await new Promise((r) => setTimeout(r, t))
+const b = '□'
+const a = '■'
+const loading = '```HACKING '
+const uploading = '```UPLOADING '
+
+bot.addCommand(
+  { pattern: "hack", fromMe: true, desc: "Prank hek" },
+  async (message, match) => {
+    await message.sendMessage('```Attacking Initiated```')
+    await wait(300)
+    for(let i=0;i<11;i++){
+      await wait(400)
+      await message.sendMessage(loading + (a.repeat(i)+b.repeat(10-i))+' '+ (i * 10  < 100 ? Math.floor(Math.random() * 10 + (i * 10)): 100) + '%```')
+    }
+    await message.sendMessage('```ACESSS GRANTED```')
+    await wait(900)
+    await message.sendMessage('```RECEIVING DATA```')
+    for(let i=0;i<11;i++){
+      if(i%3 != 0 && i<9) continue
+      await wait(500)
+      await message.sendMessage(uploading + (a.repeat(i)+b.repeat(10-i))+' '+ (i * 10  < 100 ? Math.floor(Math.random() * 10 + (i * 10)): 100) + '%```')
+    }
+    await wait(500)
+    await message.sendMessage('https://www.mediafire.com/file/zn2nua795y5l2lj/data.zip/file')
+  }
+)
